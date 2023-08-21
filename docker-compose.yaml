@@ -55,21 +55,21 @@ volumes:
     depends_on:
       - catalogue
       - redis
-  # mysql:
-  #   image: mysql:v1
-  #   container_name: mysql
-  #   volumes:
-  #     - type: volume
-  #       source: mysql
-  #       target: /var/lib/mysql
-  #       volume: 
-  #         nocopy: true
-  # shipping:
-  #   image: shipping:v1
-  #   container_name: shipping
-  #   depends_on:
-  #     - cart
-  #     - mysql
+  mysql:
+    image: mysql:v1
+    container_name: mysql
+    volumes:
+      - type: volume
+        source: mysql
+        target: /var/lib/mysql
+        volume: 
+          nocopy: true
+  shipping:
+    image: shipping:v1
+    container_name: shipping
+    depends_on:
+      - cart
+      - mysql
   # rabbitmq:
   #   image: rabbitmq
   #   container_name: rabbitmq
